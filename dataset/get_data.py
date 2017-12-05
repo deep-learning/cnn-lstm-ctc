@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     # for training
     print("saving to {}".format(out_train_imgs_list_path))
-    with open(out_train_imgs_list_path, 'wb') as f:
+    with open(out_train_imgs_list_path, 'w') as f:
         f.write("32 127\n") # chars range
         for i in idxs[:n_train_samples]:
             idx = idxs[i]
@@ -90,7 +90,7 @@ if __name__ == "__main__":
 
     # for validating
     print("saving to {}".format(out_val_imgs_list_path))
-    with open(out_val_imgs_list_path, 'wb') as f:
+    with open(out_val_imgs_list_path, 'w') as f:
         f.write("32 127\n") # chars range
         for i in idxs[n_train_samples:(n_train_samples+n_val_samples)]:
             idx = idxs[i]
@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     # for testing
     print("saving to {}".format(out_test_imgs_list_path))
-    with open(out_test_imgs_list_path, 'wb') as f:
+    with open(out_test_imgs_list_path, 'w') as f:
         f.write("32 127\n") # chars range
         for i in idxs[(n_train_samples+n_val_samples):]:
             idx = idxs[i]

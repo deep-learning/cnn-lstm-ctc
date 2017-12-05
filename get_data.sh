@@ -25,7 +25,7 @@ if [ -d $split_images_dir ]; then
    rm -rf $split_images_dir
 fi
 mkdir $split_images_dir
-python dataset/get_data.py $raw_data_root
+python3 dataset/get_data.py $raw_data_root
 
 # removing temporal file
 echo "removing $trans_dir"
