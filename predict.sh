@@ -12,4 +12,4 @@ else
 fi
 
 # predict
-python predict/predict.py $model_path $test_img_list_path $test_output_dir
+python3 predict/predict.py $model_path $test_img_list_path $test_output_dir

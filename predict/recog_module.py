@@ -5,6 +5,12 @@ import theano
 import theano.tensor as T
 import numpy as np
 import time
+import sys
+
+sys.path.insert(0, '/home/ba/repo/cnn-lstm-ctc/')
+sys.path.insert(0, '/home/ba/repo/cnn-lstm-ctc/layers')
+
+
 from layers.net import Net
 from layers.lstm_layer import BLSTMLayer
 from layers.utee import resume_model
@@ -74,8 +80,8 @@ class Recognition():
 
         # packing
         imgs_n_samples = len(imgs)
-        x = np.zeros((imgs_n_samples, 1, self.height, x_max_len)). astype(theano.config.floatX)
-        x_mask = np.zeros((imgs_n_samples, x_max_len)).astype(theano.config.floatX)
+        x = np.zeros((imgs_n_samples, 1, self.height, int(x_max_len))).astype(theano.config.floatX)
+        x_mask = np.zeros((imgs_n_samples, int(x_max_len))).astype(theano.config.floatX)
         for i, img in enumerate(imgs):
             xx = np.array(img)
             shape = xx.shape
@@ -149,7 +155,7 @@ class Recognition():
             seq_new, confidence_new = self._compute_confidence(pred, softmax_matrix)
             seqs.extend(seq_new)
             confidences.extend(confidence_new)
-        recog_result = zip(seqs, confidences)
+        recog_result = list(zip(seqs, confidences))
         print("send back result({})".format(time.time() - tic))
         return recog_result[:imgs_n_samples]
 

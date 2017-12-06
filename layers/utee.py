@@ -70,7 +70,7 @@ def snapshot(file_path, net):
 def resume_model(file_path, net):
     print("resuming snapshot from {}".format(file_path))
     with open(file_path, 'rb') as f:
-        params = pkl.load(f)
+        params = pkl.load(f, encoding='latin1')
     assert isinstance(net.params, dict)
     for key, value in net.params.items():
         assert key in params

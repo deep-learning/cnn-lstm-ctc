@@ -19,7 +19,7 @@ reg.init(model_path)
 
 # read test_imgs_list_path
 dir_name = os.path.dirname(test_imgs_list_path)
-with open(test_imgs_list_path, 'rb') as f:
+with open(test_imgs_list_path, 'r') as f:
     l = f.readlines()
 
 # loaded images from disk
