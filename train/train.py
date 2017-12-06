@@ -4,6 +4,8 @@
 import sys
 assert len(sys.argv) == 2, "Usage: python solver.py image_root_folder"
 
+sys.path.insert(0, '/home/ba/repo/cnn-lstm-ctc/')
+sys.path.insert(0, '/home/ba/repo/cnn-lstm-ctc/layers')
 import theano
 import theano.tensor as T
 from layers.net import Net

@@ -1,11 +1,12 @@
-import cPickle
+import _pickle as cPickle
 import gzip
 import os
 import numpy
 
 import theano
 import theano.tensor as T
-from theano.tensor.signal import downsample
+from theano.tensor.signal import pool
+# from theano.tensor.signal import downsample
 from theano.tensor.nnet import conv
 from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 import numpy as np
@@ -48,7 +49,7 @@ class ConvPoolLayer(object):
             image_shape=image_shape
         )
 
-        pooled_out = downsample.max_pool_2d(
+        pooled_out = pool.max_pool_2d(
             input=conv_out,
             ds=poolsize,
             ignore_border=True
@@ -210,10 +211,10 @@ def load_data(dataset):
         origin = (
             'http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz'
         )
-        print 'Downloading data from %s' % origin
+        print('Downloading data from ', origin)
         urllib.urlretrieve(origin, dataset)
 
-    print '... loading data'
+    print('... loading data')
 
     # Load the dataset
     f = gzip.open(dataset, 'rb')

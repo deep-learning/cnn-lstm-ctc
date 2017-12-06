@@ -82,7 +82,7 @@ class Prefetcher():
         self.imgs_dirs = imgs_dir
         self.img_list = []
         self.labels = []
-        with open(img_list_path, 'rb') as f:
+        with open(img_list_path, 'r') as f:
             l = f.readlines()
         print("loaded {} samples from {}".format(len(l) - 1, img_list_path))
         chars_from, chars_to = l[0].split(' ')
