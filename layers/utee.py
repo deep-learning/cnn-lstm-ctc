@@ -134,8 +134,8 @@ class Prefetcher():
         print("[prefetch]height: {}, x_max_step:{}, y_max_width:{}".format(height, x_max_len, y_max_len))
 
         # x and x_mask
-        x = np.zeros((batch_size, 1, height, x_max_len)). astype(config.floatX)
-        x_mask = np.zeros((batch_size, x_max_len)).astype(config.floatX)
+        x = np.zeros((int(batch_size), 1, int(height), int(x_max_len))).astype(config.floatX)
+        x_mask = np.zeros((int(batch_size), int(x_max_len))).astype(config.floatX)
         for i, xx in enumerate(features):
             shape = xx.shape
             l = int(np.ceil(xx.shape[1] * 1. / stride))
